@@ -1,0 +1,29 @@
+name: WAPI Release TEST
+
+on:
+  schedule:
+    - cron: '55 9 21 5 *'  # ← UTC指定（例: JST18:55なら 9:55）
+
+permissions:
+  contents: write  # ← これが"git push"を許可する重要パラメータ！
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Create new index.html
+        run: |
+          echo "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>WAPI公開テスト！</title></head><body style='background:#111; color:#0f0; text-align:center; padding-top:10%'><h1 style='font-size:2.5em;'>✅ テスト公開成功！</h1><p>このページは自動で切り替わりました。</p></body></html>" > index.html
+
+      - name: Commit and push
+        run: |
+          git config user.name "momoringo"
+          git config user.email "hiragi.momo.yakan@gmail.com"
+          git add index.html
+          git commit -m "Auto: Replace index.html for test"
+          git push origin gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
