@@ -1,0 +1,17 @@
+
+name: Publish WAPI Page
+on:
+  schedule:
+    - cron: '0 15 31 5 *'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Switch to gh-pages
+        run: |
+          git checkout gh-pages
+          echo "WAPI公開中！" > index.html
+          git add index.html
+          git commit -m "WAPI公開スタート"
+          git push origin gh-pages
