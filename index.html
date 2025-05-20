@@ -5,17 +5,21 @@
   <meta charset="UTF-8">
   <title>WAPI 公開カウントダウン</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { background:#000; color:gold; font-family:sans-serif; text-align:center; padding-top:10%; }
+    h1 { font-size: 2.5em; }
+    #countdown { font-size: 1.8em; margin-top: 20px; }
+  </style>
 </head>
-<body style="background:#000; color:gold; text-align:center; font-family:sans-serif;">
+<body>
   <h1>WAPI 公開まであと…</h1>
   <div id="countdown">読み込み中…</div>
   <script>
-    const targetDate = new Date("2025-06-01T00:00:00+09:00").getTime();
-    const countdown = document.getElementById("countdown");
+    const target = new Date("2025-06-01T00:00:00+09:00").getTime();
     setInterval(() => {
       const now = new Date().getTime();
-      const diff = targetDate - now;
-      if (diff <= 0) { countdown.innerText = "公開されました！"; return; }
+      const diff = target - now;
+      if (diff <= 0) return countdown.innerText = "公開されました！";
       const d = Math.floor(diff / (1000*60*60*24));
       const h = Math.floor((diff / (1000*60*60)) % 24);
       const m = Math.floor((diff / (1000*60)) % 60);
