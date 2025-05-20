@@ -1,16 +1,16 @@
-name: WAPI Release Trigger
+name: WAPI Release TEST
 on:
   schedule:
-    - cron: '0 15 31 5 *'  # ← 6月1日0時JST（UTC換算で5月31日15時）
+    - cron: '47 9 21 5 *'  # ← UTCなので 18:47 JST
 jobs:
-  deploy:
+  test-release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - run: |
-          echo "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>WAPI公開！</title></head><body style='background:black; color:lime; text-align:center; padding-top:10%'><h1 style='font-size:3em;'>🎉 WAPI 公開中 🎉</h1><p>ようこそ、AI創作の世界へ。</p></body></html>" > index.html
+          echo "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>WAPI公開テスト！</title></head><body style='background:#111; color:#0f0; text-align:center; padding-top:10%'><h1 style='font-size:2.5em;'>✅ テスト公開成功！</h1><p>このページは自動で切り替わりました。</p></body></html>" > index.html
           git config user.name "momoringo"
           git config user.email "hiragi.momo.yakan@gmail.com"
           git add index.html
-          git commit -m "WAPI本公開ページへ自動切り替え"
+          git commit -m "Test: WAPIカウントダウン → テスト公開ページ"
           git push origin gh-pages
