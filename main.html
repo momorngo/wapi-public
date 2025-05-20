@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>WAPI 本体UI - Split入力</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #000;
+      color: gold;
+      font-family: "Segoe UI", sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    textarea {
+      width: 80%;
+      height: 100px;
+      font-size: 1.2em;
+      background: #111;
+      color: #0f0;
+      border: 2px solid gold;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+    button {
+      font-size: 1.2em;
+      padding: 10px 30px;
+      border: none;
+      background: gold;
+      color: black;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    #response {
+      font-size: 1.3em;
+      margin-top: 20px;
+      background: #111;
+      padding: 20px;
+      border: 1px solid #444;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎤 WAPI 本体操作 - Split入力</h1>
+  <p>セイレーンにSplit構文を送信できます。</p>
+  <textarea id="splitInput" placeholder="例: セイレーン、優しく返事して。"></textarea><br>
+  <button onclick="sendSplit()">▶ セイレーンに送信</button>
+
+  <div id="response">セイレーン: ……お返事待ってるよ？♥</div>
+
+  <script>
+    function sendSplit() {
+      const input = document.getElementById("splitInput").value;
+      const responseBox = document.getElementById("response");
+      if (input.trim() === "") {
+        responseBox.innerText = "セイレーン: ……なにか言って♥";
+      } else {
+        responseBox.innerText = "セイレーン: はぁい♥ Split受け取ったよ…『" + input + "』ね？";
+      }
+    }
+  </script>
+</body>
+</html>
