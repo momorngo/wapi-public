@@ -1,0 +1,9 @@
+id: WAPI_ReleaseTrigger
+at: 2025-06-01T00:00:00+09:00
+tag: [release, official]
+char_live2d: seiren
+bgm: wapi_opening_theme
+narrator: seiren
+text: WAPI、正式公開です！
+fx: light_burst
+trigger_link: https://yourdomain.com/start
